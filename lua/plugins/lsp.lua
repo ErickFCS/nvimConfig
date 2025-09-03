@@ -38,10 +38,10 @@ return {
             -- })
 
             -- Keymaps for LSP actions
-            vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostics" })
-            vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
-            vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
-            vim.keymap.set("n", "<leader>f", function()
+            vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Show diagnostics" })
+            vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename symbol" })
+            vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code action" })
+            vim.keymap.set("n", "<leader>lf", function()
                 vim.lsp.buf.format({ async = true })
             end, { desc = "Format buffer" })
         end,
