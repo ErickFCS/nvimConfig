@@ -1,8 +1,8 @@
 -- BASIC CONFIGURATION
-vim.o.expandtab = true
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.softtabstop = 4
+vim.o.expandtab = true -- Uses spaces insted of tabs \t
+vim.o.tabstop = 2 -- How much spaces does a \t uses
+vim.o.shiftwidth = 2 -- How many spaces does a indent command of fold uses
+vim.o.softtabstop = 2 -- How many spaces does the keys <Tab> and <BS> uses
 vim.o.foldmethod = "indent"
 vim.o.cursorline = false
 vim.o.cursorcolumn = false
