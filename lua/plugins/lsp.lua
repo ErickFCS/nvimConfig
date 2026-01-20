@@ -8,39 +8,49 @@ return {
     -- end,
   },
 
-  -- Mason LSPConfig bridge
   {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "angularls",
-          "bashls",
-          "clangd",
-          "cobol_ls",
-          "cssls",
-          "docker_language_server",
-          "gh_actions_ls",
-          "html",
-          "jdtls",
-          "lua_ls",
-          "marksman",
-          "mbake",
-          "prettierd",
-          "pyright",
-          "solidity_ls_nomicfoundation",
-          "tombi",
-          "ts_ls",
-          "yamlls",
-        },
-        automatic_installation = true,
-        automatic_enable = true,
-      })
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+    opts = {
+      ensure_installed = {
+        "angular-language-server",
+        "bash-language-server",
+        "clangd",
+        "cobol-language-support",
+        "css-lsp",
+        "docker-language-server",
+        "gh-actions-language-server",
+        "html-lsp",
+        "jdtls",
+        "lua-language-server",
+        "marksman",
+        "mbake",
+        "nomicfoundation-solidity-language-server",
+        "prettierd",
+        "pyright",
+        "tombi",
+        "typescript-language-server",
+        "yaml-language-server",
+      },
+      auto_update = true,
+      run_on_start = true,
+    }
+  },
 
+  -- Core LSP
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
+      "hrsh7th/cmp-nvim-lsp",
+    },
+    config = function()
       -- Enhance LSP capabilities for nvim-cmp
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
+      -- Loads the Mason LSP bridge
+      require("mason-lspconfig").setup({})
 
       -- Apply capabilities to all servers (wildcard in nvim 0.11+)
       vim.lsp.config("*", {
@@ -68,11 +78,6 @@ return {
         })
       end, { desc = "Format buffer" })
     end,
-  },
-
-  -- Core LSP
-  {
-    "neovim/nvim-lspconfig",
   },
 
   -- Core formatter
