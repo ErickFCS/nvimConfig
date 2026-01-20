@@ -88,6 +88,7 @@ return {
         javascript = { "prettierd" },
         typescript = { "prettierd" },
         html = { "prettierd" },
+        htmlangular = { "prettierd" },
         css = { "prettierd" },
       },
     },
