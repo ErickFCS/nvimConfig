@@ -14,7 +14,26 @@ return {
     dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "pyright", "ts_ls", "clangd", "html", "cssls", "jdtls", "bashls", },
+        ensure_installed = {
+          "angularls",
+          "bashls",
+          "clangd",
+          "cobol_ls",
+          "cssls",
+          "docker_language_server",
+          "gh_actions_ls",
+          "html",
+          "jdtls",
+          "lua_ls",
+          "marksman",
+          "mbake",
+          "prettierd",
+          "pyright",
+          "solidity_ls_nomicfoundation",
+          "tombi",
+          "ts_ls",
+          "yamlls",
+        },
         automatic_installation = true,
         automatic_enable = true,
       })
@@ -43,7 +62,10 @@ return {
       vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename symbol" })
       vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code action" })
       vim.keymap.set("n", "<leader>lf", function()
-        vim.lsp.buf.format({ async = true })
+        require("conform").format({
+          async = true,
+          lsp_fallback = true -- This is the magic: it uses LSP if no formatter is defined.
+        })
       end, { desc = "Format buffer" })
     end,
   },
@@ -51,5 +73,18 @@ return {
   -- Core LSP
   {
     "neovim/nvim-lspconfig",
+  },
+
+  -- Core formatter
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        javascript = { "prettierd" },
+        typescript = { "prettierd" },
+        html = { "prettierd" },
+        css = { "prettierd" },
+      },
+    },
   },
 }
