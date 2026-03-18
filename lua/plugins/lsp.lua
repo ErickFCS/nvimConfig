@@ -15,6 +15,7 @@ return {
       ensure_installed = {
         "angular-language-server",
         "bash-language-server",
+        "beautysh",
         "clangd",
         "cobol-language-support",
         "css-lsp",
@@ -28,8 +29,11 @@ return {
         "nomicfoundation-solidity-language-server",
         "prettierd",
         "pyright",
+        "terraform-ls",
+        "tinymist",
         "tombi",
         "typescript-language-server",
+        "typstyle",
         "yaml-language-server",
       },
       auto_update = true,
@@ -85,11 +89,19 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        javascript = { "prettierd" },
-        typescript = { "prettierd" },
+        css = { "prettierd" },
         html = { "prettierd" },
         htmlangular = { "prettierd" },
-        css = { "prettierd" },
+        javascript = { "prettierd" },
+        sh = { "beautysh" },
+        terraform = { "terraform_fmt" },
+        typescript = { "prettierd" },
+        typst = { "typstyle" },
+      },
+      formatters = {
+        beautysh = {
+          args = { "--indent-size", "2", "-" },
+        },
       },
     },
   },
