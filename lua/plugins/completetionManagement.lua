@@ -1,15 +1,14 @@
 return {
-  -- Completion engine
   {
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",        -- load only when needed
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",     -- LSP completions
-      "hrsh7th/cmp-buffer",       -- Buffer words
-      "hrsh7th/cmp-path",         -- File system paths
-      "L3MON4D3/LuaSnip",         -- Snippet engine (optional)
-      "saadparwaiz1/cmp_luasnip", -- Snippet completions
+      "L3MON4D3/LuaSnip",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      "saadparwaiz1/cmp_luasnip",
     },
+    event = "InsertEnter",
     config = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
@@ -42,13 +41,15 @@ return {
             end
           end, { "i", "s" }),
         }),
-        sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-        }, {
-          { name = "buffer" },
-          { name = "path" },
-        }),
+        sources = cmp.config.sources(
+          {
+            { name = "nvim_lsp" },
+            { name = "luasnip" },
+          }, {
+            { name = "buffer" },
+            { name = "path" },
+          }
+        ),
       })
     end,
   },

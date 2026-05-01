@@ -9,6 +9,7 @@ vim.o.cursorcolumn = false
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.statusline = "  %n | %f %r %m %{&filetype} | %= | %l:%c %p%% " 
+vim.o.scrolloff = 5
 -- TRANSPARENT BACKGROUND
 vim.cmd('hi Normal guibg=none')
 vim.cmd('hi NonText guibg=none')
