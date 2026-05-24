@@ -24,6 +24,29 @@ return {
       -- Apply capabilities to all servers (wildcard in nvim 0.11+)
       vim.lsp.config("*", { capabilities = capabilities, })
 
+      vim.lsp.config("basedpyright", {
+        settings = {
+          basedpyright = {
+            analysis = {
+              typeCheckingMode = "standard",
+              -- Let Ruff handle unused imports and variables
+              diagnosticSeverityOverrides = {
+                reportUnusedImport = "none",
+                reportUnusedVariable = "none",
+              },
+            },
+          },
+        },
+      })
+
+      vim.lsp.config("ruff", {
+        on_attach = function(client, bufnr)
+          if client.server_capabilities then
+            client.server_capabilities.hoverProvider = false
+          end
+        end,
+      })
+
       -- Optional: configure a specific server if you want custom settings
       -- vim.lsp.config("lua_ls", {
       -- settings = {

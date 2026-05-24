@@ -1,5 +1,6 @@
 return {
   "angular-language-server",
+  "basedpyright",
   "bash-language-server",
   "beautysh",
   "clangd",
@@ -14,6 +15,7 @@ return {
   "mbake",
   "nomicfoundation-solidity-language-server",
   "prettierd",
+  "ruff",
   "terraform-ls",
   "tinymist",
   "tombi",
