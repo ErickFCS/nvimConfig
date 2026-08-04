@@ -22,3 +22,8 @@ vim.cmd('hi EndOfBuffer guibg=none')
 vim.cmd('hi StatusLine guibg=none')
 -- KEYMAPS
 
+-- TOOL CHANGE
+if vim.fn.executable("rg") == 1 then
+  vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"
+  vim.opt.grepformat = "%f:%l:%c:%m"
+end
