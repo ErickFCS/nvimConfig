@@ -47,6 +47,15 @@ return {
         end,
       })
 
+      vim.lsp.config("cssls", {
+        filetypes = { "css", "scss", "less", "html", "htmldjango", "jinja" },
+        settings = {
+          css = { validate = true, lint = { unknownAtRules = "ignore" } },
+          scss = { validate = true, lint = { unknownAtRules = "ignore" } },
+          less = { validate = true, lint = { unknownAtRules = "ignore" } },
+        },
+      })
+
       -- Optional: configure a specific server if you want custom settings
       -- vim.lsp.config("lua_ls", {
       -- settings = {
