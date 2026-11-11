@@ -7,7 +7,7 @@ return {
   lazy = true,
   keys = {
     {
-      "<leader>ha",
+      "<leader>ga",
       function()
         local gs = package.loaded.gitsigns
         if gs then
@@ -20,13 +20,13 @@ return {
       end,
       desc = "Master Toggle Git Gutter (and load plugin)",
     },
-    { "<leader>hn", "<cmd>Gitsigns next_hunk<CR>",    desc = "Next Git Hunk" },
-    { "<leader>hN", "<cmd>Gitsigns prev_hunk<CR>",    desc = "Prev Git Hunk" },
-    { "<leader>hp", "<cmd>Gitsigns preview_hunk<CR>", desc = "Preview hunk" },
-    { "<leader>hb", "<cmd>Gitsigns blame_line<CR>",   desc = "Git blame line" },
-    { "<leader>hd", "<cmd>Gitsigns diffthis<CR>",     desc = "Diff this" },
-    { "<leader>hs", "<cmd>Gitsigns stage_hunk<CR>",   desc = "Stage hunk" },
-    { "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>",   desc = "Reset hunk" },
+    { "<leader>gn", "<cmd>Gitsigns next_hunk<CR>",    desc = "Next Git Hunk" },
+    { "<leader>gN", "<cmd>Gitsigns prev_hunk<CR>",    desc = "Prev Git Hunk" },
+    { "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", desc = "Preview hunk" },
+    { "<leader>gb", "<cmd>Gitsigns blame_line<CR>",   desc = "Git blame line" },
+    { "<leader>gd", "<cmd>Gitsigns diffthis<CR>",     desc = "Diff this" },
+    { "<leader>gs", "<cmd>Gitsigns stage_hunk<CR>",   desc = "Stage hunk" },
+    { "<leader>gr", "<cmd>Gitsigns reset_hunk<CR>",   desc = "Reset hunk" },
   },
   opts = {
     signcolumn         = false,

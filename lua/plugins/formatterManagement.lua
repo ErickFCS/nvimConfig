@@ -9,7 +9,9 @@ return {
     branch = "master",
     dependencies = {},
     lazy = true,
-    keys = {},
+    keys = {
+      { "<leader>f", function() require("conform").format({ async = true, lsp_fallback = true }) end, desc = "Format buffer" },
+    },
     opts = {
       formatters_by_ft = formatters_by_ft,
       formatters = formatters_args,
