@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 -- BASIC CONFIGURATION
 vim.o.expandtab = true -- Uses spaces insted of tabs \t
 vim.o.tabstop = 2 -- How much spaces does a \t uses
