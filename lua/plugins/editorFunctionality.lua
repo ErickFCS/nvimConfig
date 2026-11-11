@@ -1,4 +1,4 @@
-local highlighters = require("plugins.lspFunctionality.highlighters")
+local highlighters = require("plugins.editorFunctionality.highlighters")
 
 return {
   {
@@ -11,11 +11,10 @@ return {
     },
     lazy = true,
     keys = {
-      { "<leader>tx", "<cmd>Trouble diagnostics toggle<CR>",              desc = "Diagnostics (Trouble)" },
-      { "<leader>tw", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>", desc = "Buffer Diagnostics (Trouble)" },
+      { "<leader>td", "<cmd>Trouble diagnostics toggle<CR>",              desc = "Diagnostics (Trouble)" },
+      { "<leader>tD", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>", desc = "Buffer Diagnostics (Trouble)" },
       { "<leader>tr", "<cmd>Trouble lsp_references toggle<CR>",           desc = "LSP references (Trouble)" },
       { "<leader>td", "<cmd>Trouble lsp_definitions toggle<CR>",          desc = "LSP definitions (Trouble)" },
-      { "<leader>tt", "<cmd>Trouble todo toggle<CR>",                     desc = "TODOs (Trouble)" },
       { "<leader>ts", "<cmd>Trouble symbols toggle focus=false<CR>",      desc = "Symbols (Sidebar)" },
     },
     opts = {},
@@ -49,5 +48,28 @@ return {
       -- Highlight scope
       require("mini.indentscope").setup()
     end,
+  },
+  {
+    "ibhagwan/fzf-lua",
+    enabled = true,
+    cond = true,
+    branch = "main",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    lazy = false,
+    keys = {},
+    opts = {}
+  },
+  {
+    "kevinhwang91/nvim-hlslens",
+    enabled = true,
+    cond = true,
+    branch = "main",
+    dependencies = {},
+    lazy = false,
+    keys = {
+      { "n" },
+      { "N" },
+    },
+    opts = {},
   },
 }

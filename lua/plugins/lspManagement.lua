@@ -1,3 +1,5 @@
+local configuration_by_lsp = require("plugins.lspManagement.configuration_by_lsp")
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -13,7 +15,6 @@ return {
       { "<leader>ld", vim.diagnostic.open_float, desc = "Show diagnostics" },
       { "<leader>lr", vim.lsp.buf.rename, desc = "Rename symbol" },
       { "<leader>la", vim.lsp.buf.code_action, desc = "Code action" },
-      { "<leader>lf", function() require("conform").format({ async = true, lsp_fallback = true }) end, desc = "Format buffer" },
     },
     opts = {},
     config = function()
@@ -23,48 +24,10 @@ return {
       require("mason-lspconfig").setup({})
       -- Apply capabilities to all servers (wildcard in nvim 0.11+)
       vim.lsp.config("*", { capabilities = capabilities, })
-
-      vim.lsp.config("basedpyright", {
-        settings = {
-          basedpyright = {
-            analysis = {
-              typeCheckingMode = "standard",
-              -- Let Ruff handle unused imports and variables
-              diagnosticSeverityOverrides = {
-                reportUnusedImport = "none",
-                reportUnusedVariable = "none",
-              },
-            },
-          },
-        },
-      })
-
-      vim.lsp.config("ruff", {
-        on_attach = function(client, bufnr)
-          if client.server_capabilities then
-            client.server_capabilities.hoverProvider = false
-          end
-        end,
-      })
-
-      vim.lsp.config("cssls", {
-        filetypes = { "css", "scss", "less", "html", "htmldjango", "jinja" },
-        settings = {
-          css = { validate = true, lint = { unknownAtRules = "ignore" } },
-          scss = { validate = true, lint = { unknownAtRules = "ignore" } },
-          less = { validate = true, lint = { unknownAtRules = "ignore" } },
-        },
-      })
-
-      -- Optional: configure a specific server if you want custom settings
-      -- vim.lsp.config("lua_ls", {
-      -- settings = {
-      -- Lua = {
-      -- runtime = { version = "LuaJIT" },
-      -- diagnostics = { globals = { "vim" } },
-      -- },
-      -- },
-      -- })
+      -- Apply configuration by lsp
+      for key, value in pairs(configuration_by_lsp) do
+        vim.lsp.config(key, value)
+      end
     end,
   },
 }
