@@ -27,4 +27,15 @@ return {
       run_on_start = true,
     }
   },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ':TSUpdate',
+    enabled = true,
+    cond = true,
+    branch = "main",
+    dependencies = {},
+    lazy = false,
+    keys = {},
+    opts = {},
+  }
 }
